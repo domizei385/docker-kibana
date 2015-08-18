@@ -1,6 +1,6 @@
 # Kibana
 
-Kibana 3.1.2
+Kibana 4.1.1
 
 Uses Nginx to serve Kibana
 
