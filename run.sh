@@ -8,7 +8,9 @@ if [ ! -f /proc/net/if_inet6 ]; then
   sed -e '/listen \[::\]:80/ s/^#*/#/' -i /etc/nginx/sites-enabled/*
 fi
 
-sed -e "s/localhost:9200/${ES_HOST}:${ES_PORT}/" /opt/kibana/config/kibana.yml > /opt/kibana/config/kibana.yml
+cp /opt/kibana/config/kibana.yml /opt/kibana/config/old.yml
+cat /opt/kibana/config/kibana.yml
+sed -e "s/localhost:9200/${ES_HOST}:${ES_PORT}/" /opt/kibana/config/old.yml > /opt/kibana/config/kibana.yml
 
 cat << EOF > /usr/share/nginx/html/config.js
 define(['settings'],
