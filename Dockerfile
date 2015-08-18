@@ -1,7 +1,12 @@
-FROM nginx
+FROM nginx:1.7
 
-MAINTAINER Alexey Kupershtokh <alexey.kupershtokh@gmail.com>
+ENV KIBANA_VERSION 3.1.2
 
-ADD https://download.elastic.co/kibana/kibana/kibana-3.1.2.tar.gz /tmp/
+ADD run.sh /usr/local/bin/run
 
-RUN tar -C /usr/share/nginx/html --strip-components=1 -xf /tmp/kibana-3.1.2.tar.gz
+ADD https://download.elastic.co/kibana/kibana/kibana-${KIBANA_VERSION}.tar.gz /tmp/kibana.tar.gz
+RUN tar xf /tmp/kibana.tar.gz -C /usr/share/nginx/html --strip-components=1
+
+EXPOSE 80
+
+CMD ["/usr/local/bin/run"]
