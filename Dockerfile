@@ -12,5 +12,6 @@ RUN chmod +x /etc/init.d/kibana4
 RUN update-rc.d kibana4 defaults 96 9
 
 EXPOSE 80
+EXPOSE 5601
 
 CMD ["/usr/local/bin/run"]
