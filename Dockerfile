@@ -5,8 +5,9 @@ ENV KIBANA_VERSION 4.1.1-linux-x64
 ADD run.sh /usr/local/bin/run
 
 ADD https://download.elastic.co/kibana/kibana/kibana-${KIBANA_VERSION}.tar.gz /tmp/kibana.tar.gz
-RUN mkdir /opt/kibana
-RUN tar xf /tmp/kibana.tar.gz -C /opt/kibana --strip-components=1
+RUN mkdir /opt
+RUN tar xf /tmp/kibana.tar.gz -C /opt --strip-components=1
+RUN mv /opt/kibana-${KIBANA_VERSION} /opt/kibana
 
 ADD https://gist.githubusercontent.com/thisismitch/8b15ac909aed214ad04a/raw/bce61d85643c2dcdfbc2728c55a41dab444dca20/kibana4 /etc/init.d/kibana4
 RUN chmod +x /etc/init.d/kibana4
