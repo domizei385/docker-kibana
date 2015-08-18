@@ -3,9 +3,8 @@ FROM nginx:1.7
 ENV KIBANA_VERSION 4.1.1-linux-x64
 
 ADD run.sh /usr/local/bin/run
-
 ADD https://download.elastic.co/kibana/kibana/kibana-${KIBANA_VERSION}.tar.gz /tmp/kibana.tar.gz
-RUN mkdir /opt
+RUN mkdir -p /opt
 RUN tar xf /tmp/kibana.tar.gz -C /opt --strip-components=1
 RUN mv /opt/kibana-${KIBANA_VERSION} /opt/kibana
 
